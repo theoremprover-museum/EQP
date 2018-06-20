@@ -1,0 +1,26 @@
+EQP 0.9e
+
+This is a theorem prover for equational logic.
+
+To compile EQP on your UNIX system, "make eqp".
+
+See the file Manual.txt for a short users' guide.
+
+See the file ChangeLog for a list of changes to the program.
+
+See the directory examples for sample input files.
+
+An earlier version of eqp (0.9) was used for the paper
+
+W. McCune, 33 Basic Test Problems: A Practical Evaluation of Some
+Paramodulation Strategies.  Chapter 5 in "Automated Reasoning and its
+Applications: Essays in Honor of Larry Wos", ed. R. Veroff, MIT Press
+(1997).
+
+Also see http://www.mcs.anl.gov/AR/eqp/
+
+May 12, 2009
+
+  William McCune
+  http://www.cs.unm.edu/~mccune/
+

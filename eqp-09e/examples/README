@@ -1,0 +1,35 @@
+The subdirectories contain some example input files for EQP.
+
+33-basic:
+
+    From the paper [W. McCune, 33 Basic Test Problems: A
+    Practical Evaluation of Some Paramodulation Strategies.  Chapter 5 in
+    "Automated Reasoning and its Applications: Essays in Honor of Larry
+    Wos", ed. R. Veroff, MIT Press (1997)].
+   
+    All should be proved within a few minutes.
+
+ortholattice:
+
+    From the paper [W. McCune, Automatic Proofs and
+    Counterexamples for some Ortholattice Identities, preprint, 1997].
+
+    e2.in should be proved in a few seconds
+    e3.in should be proved in a few days
+
+robbins:
+
+    From the paper [W. McCune, Solution of the Robbins Problem.
+    To appear in Journal of Automated Reasoning, 1997].
+
+    eqp-lemma0.out: UNIT CONFLICT from 88 and x=x at   5.19 seconds.
+    eqp-lemma1.out: UNIT CONFLICT from 1802 and 1 at 2319.30 seconds.
+    eqp-lemma2.out: UNIT CONFLICT from 3733 and 1 at 608688.73 seconds.
+    eqp-lemma3.out: UNIT CONFLICT from 8871 and 5 at 867010.30 seconds.
+
+ring:
+
+    The x^2=x and x^3=x ring theory problems.
+
+    x2.in - a few seconds
+    x3.in - a few minutes 

@@ -1,0 +1,39 @@
+% This input file is for EQP 0.9.
+%
+% Lemma 1. If a Robbins algebra satisfies 
+%
+%     exists C exists D, C+D=C,
+%
+% then it satisfies 
+%
+%     exists A, A+A=A.
+% 
+% This takes about 40 minutes on a SPARC 5.
+
+assoc_comm(+).
+op(500, xfy, +).
+
+assign(max_mem, 48000).
+assign(max_seconds, 14400).
+
+% clear(print_kept).
+clear(print_new_demod).
+clear(print_back_demod).
+clear(print_given).
+
+set(para_pairs).
+% assign(pick_given_ratio, 4).
+set(basic_paramod).
+
+assign(max_weight, 30).
+
+end_of_commands.
+
+list(sos).
+C + D = C.                            % hypothesis
+n(n(n(y) + x) + n(x + y)) = x.        % Robbins axiom
+end_of_list.
+
+list(passive).
+x + x != x.
+end_of_list.

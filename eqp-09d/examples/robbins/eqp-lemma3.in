@@ -1,0 +1,30 @@
+assoc_comm(+).
+op(500, xfy, +).
+
+assign(max_weight, 50).
+assign(max_mem, 80000).
+assign(report_given, 5000).
+
+set(para_pairs). clear(print_given).
+
+set(basic_paramod).
+assign(pick_given_ratio, 1).
+assign(ac_superset_limit, 0).
+
+assign(max_proofs, 500).
+
+end_of_commands.
+
+list(sos).
+n(n(n(y) + x) + n(x + y)) = x.        % Robbins axiom
+n(n(A) + B) + n(n(A) + n(B)) != A.    % denial of Huntington
+end_of_list.
+
+list(passive).
+junk.
+n(n(A)) != A.
+A+A != A.
+x+x != x.
+x+y != x.
+n(x+y) != n(x).
+end_of_list.

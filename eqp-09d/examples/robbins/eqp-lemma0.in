@@ -1,0 +1,37 @@
+% This input file is for EQP 0.9.
+%
+% Lemma 0. If a Robbins algebra satisfies 
+%
+%     exists C, C+C=C,
+%
+% then it satisfies Huntington's axiom, that is, it is Boolean.
+%
+% This takes about 10 seconds.
+
+assoc_comm(+).
+op(500, xfy, +).
+
+assign(max_mem, 48000).
+assign(max_seconds, 14400).
+
+% clear(print_kept).
+clear(print_new_demod).
+clear(print_back_demod).
+clear(print_given).
+
+set(para_pairs).
+% assign(pick_given_ratio, 4).
+set(basic_paramod).
+
+assign(max_weight, 21).
+
+end_of_commands.
+
+list(sos).
+C + C = C.                            % hypothesis
+n(n(x + y) + n(x + n(y))) = x.        % Robbins axiom
+n(n(A) + B) + n(n(A) + n(B)) != A.    % denial of Huntington
+end_of_list.
+
+list(passive).
+end_of_list.

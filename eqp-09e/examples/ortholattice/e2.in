@@ -1,0 +1,66 @@
+assign(max_mem, 48000).
+% assign(max_seconds, 1800).
+
+% clear(print_kept).
+clear(print_new_demod).
+clear(print_back_demod).
+clear(print_given).
+
+set(para_pairs).  % delete for given algorithm
+
+set(basic_paramod).
+set(prime_paramod).
+assign(ac_superset_limit, 0).
+
+assign(pick_given_ratio, 4).
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+op(400, xfx, [^,v]).  % infix operators
+
+assoc_comm(^).
+assoc_comm(v).
+
+% assign(max_weight, 19).
+
+end_of_commands.
+
+list(sos).
+
+% Axioms for an ortholattice.
+
+% x ^ y = y ^ x.                % commutativity
+% (x ^ y) ^ z = x ^ (y ^ z).    % associativity
+
+% x v y = y v x.                % commutativity
+% (x v y) v z = x v (y v z).    % associativity
+
+c(c(x)) = x.
+x v (y v c(y)) = y v c(y).
+x v (x ^ y) = x.
+x ^ y = c(c(x) v c(y)).
+
+% Lemmas
+
+x ^ x = x.
+x v x = x.
+c(x) v x = 1.
+c(x) ^ x = 0.
+
+1 v x = 1.
+x v 1 = 1.
+1 ^ x = x.
+x ^ 1 = x.
+
+0 ^ x = 0.
+x ^ 0 = 0.
+0 v x = x.
+x v 0 = x.
+
+end_of_list.
+
+list(sos).
+
+(A v ((c(A) ^ ((A v c(B)) ^ (A v B))) v (c(A) ^ ((c(A) ^ B) v (c(A) ^ c(B)))))) != 1.
+
+end_of_list.

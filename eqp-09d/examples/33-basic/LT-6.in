@@ -1,0 +1,41 @@
+assign(max_mem, 24000).
+assign(max_seconds, 1800).
+
+clear(print_kept).
+clear(print_new_demod).
+clear(print_back_demod).
+clear(print_given).
+
+set(para_pairs).  % delete for given algorithm
+
+set(basic_paramod).
+set(functional_subsume).
+set(prime_paramod).
+assign(ac_superset_limit, 0).
+
+assign(pick_given_ratio, 4).
+%%%%%%%%%%%%%%%%%%%%%%
+op(400, xfx, [*,+,^,v,/,\,#]).  % infix operators
+
+assoc_comm(^).
+assoc_comm(v).
+
+assign(max_weight, 35).
+
+end_of_commands.
+
+list(sos).
+x v x = x.
+x ^ x = x.
+% x v y = y v x.                % commutativity
+% x ^ y = y ^ x.                % commutativity
+% (x v y) v z = x v (y v z).    % associativity
+% (x ^ y) ^ z = x ^ (y ^ z).    % associativity
+x ^ (x v y) = x.
+x v (x ^ y) = x.
+x ^ (y v (z ^ (x v u))) = (x ^ (y v (x ^ z))) v (x ^ ((x ^ y) v (z ^ u))).
+x v (y ^ (z v (x ^ u))) = (x v (y ^ (x v z))) ^ (x v ((x v y) ^ (z v u))).
+(x v (y ^ z)) ^ (z v (x ^ y)) = (z ^ ((x v (y ^ z)))) v (x ^ (y v z )).
+
+A ^ ((B v C) ^ (B v D)) != (A ^ ((B v C) ^ (B v D))) ^ ((A ^ (B v (C ^ D))) v ((A ^ C) v (A ^ D))).
+end_of_list.

@@ -1,0 +1,37 @@
+Basic Paramodulation.
+
+Do not allow paramodulation into terms that were introduced
+by instantiation of variables.  Demodulation is problematic;
+see below.
+
+1. "Nonbasic" terms are those introduced by instantiation;
+These terms inadmissible "into" terms.  (Variables also are
+inadmissible.)
+
+2. When a term is introduced by instantiation, its root
+and all of its subterms are given a "nonbasic mark".  The terms
+are inadmissible.
+
+3. Input clauses have no marks.  The marks are introduced by
+apply_basic(), and they are are copied by apply_basic(),
+apply_substitute(), when copying clauses for flip and back demod.
+
+6. Paramodulation.  Never into terms with nonbasic marks.
+However, subterms of nonbasic terms are considered (e.g., indexed
+and traversed).  A nonbasic term can have basic subterms
+(which seems contradictory), because all terms are demodulated,
+and contracta can have basic terms.
+
+4. Subsumption. When a clause is deleted by forward subsumption the
+subsumee might be more basic than the subsumer; in this case, some of
+the nonbasic marks have to be removed from the subsumer.  If the
+subsumer has a mark that does not occur in the corresponding position
+of the sumsumee, the subsumer's mark is removed.  There is a problem
+if any AC symbols are present, because corresponding terms might not
+be in corresponding positions; therefore, to be safe, all of the
+nonbasic marks of the subsumer are removed.
+
+5. Demodulation.  Nonbasic marks never prevent demodulation
+(contrary to the completeness and theoretical studies).
+When a term is rewritten (including nonbasic terms), the
+contractum never gets any nonbasic marks.

@@ -1,0 +1,722 @@
+
+ac.c,472
+static void p_binding(15,167
+static void flatten_deref(48,1210
+static int compare_ncv_context(90,2081
+static void sort_ac(147,3383
+static void elim_con_context(183,4165
+static void ac_mult_context(211,4822
+static void ac_prepare(264,5914
+static void set_up_basis_terms(310,7127
+#define GO 341,7823
+#define SUCCESS 342,7843
+#define EXHAUSTED 343,7863
+#define FAILURE 344,7883
+int unify_ac(357,8172
+void unify_ac_cancel(689,17337
+void p_ac_position(743,18516
+
+avail.c,198
+#define TP_ALLOC_SIZE 4,69
+static void *Alloc_block;Alloc_block6,141
+static void *Alloc_pos;Alloc_pos7,217
+static int Malloc_calls;9,280
+void *tp_alloc(tp_alloc19,467
+int total_mem(56,1457
+
+basis.c,777
+#define MAX_COEF 3,88
+#define MAX_BASIS 4,112
+#define MAX_COMBOS 5,136
+static int gcd(18,307
+static int lcm(33,553
+void p_ac_basis(45,746
+static int less_vec(64,1212
+static int var_check_1(83,1694
+static int var_check_2(106,2283
+static int add_solution(131,2850
+static int a_in_bounds(158,3635
+static int b_in_bounds(196,4791
+int dio(242,6390
+#define ADD_TO_SUM(352,8948
+#define SUBTRACT_FROM_SUM(355,9050
+static int superset_degree(367,9352
+int next_combo_a1(380,9574
+int next_combo_a(433,10847
+ int next_combo_b(484,11980
+#define DOWN 544,13201
+#define OVER 545,13219
+#define BACKUP 546,13237
+#define SUCCESS 547,13255
+#define FAILURE 548,13273
+ int next_combo_c(550,13292
+ int all_combos(636,15374
+ int all_combos_build(683,16424
+ main(775,18304
+
+btm.c,2422
+#define POP 18,264
+#define BACKTRACK 19,284
+#define GO 20,304
+#define SUCCESS 21,324
+#define FAILURE 22,344
+static Bt_node_ptr bt_node_avail;31,501
+static Ac_position_ptr ac_position_avail;32,535
+static Ac_match_pos_ptr ac_match_pos_avail;33,577
+static Ac_match_free_vars_pos_ptr ac_match_free_vars_pos_avail;34,621
+static long bt_node_gets,35,685
+static long bt_node_gets, bt_node_frees,35,685
+static long bt_node_gets, bt_node_frees, bt_node_avails;35,685
+static long ac_position_gets,36,742
+static long ac_position_gets, ac_position_frees,36,742
+static long ac_position_gets, ac_position_frees, ac_position_avails;36,742
+static long ac_match_pos_gets,37,811
+static long ac_match_pos_gets, ac_match_pos_frees,37,811
+static long ac_match_pos_gets, ac_match_pos_frees, ac_match_pos_avails;37,811
+static long ac_match_free_vars_pos_gets,38,883
+static long ac_match_free_vars_pos_gets, ac_match_free_vars_pos_frees,38,883
+static long ac_match_free_vars_pos_gets, ac_match_free_vars_pos_frees, ac_match_free_vars_pos_avails;38,883
+Bt_node_ptr get_bt_node(46,1056
+void free_bt_node(84,1662
+Ac_position_ptr get_ac_position(98,1893
+void free_ac_position(122,2310
+static Ac_match_pos_ptr get_ac_match_pos(136,2571
+static void free_ac_match_pos(160,3038
+static Ac_match_free_vars_pos_ptr get_ac_match_free_vars_pos(174,3333
+static void free_ac_match_free_vars_pos(198,3920
+void print_ac_mem(212,4243
+void p_ac_mem(230,5761
+void flatten(247,6033
+void flatten_mult(280,6745
+void elim_com(316,7486
+void ac_mult(344,8059
+void right_associate(390,8972
+void ac_canonical(445,10204
+int check_ac_canonical(486,11222
+static void compact_args(506,11551
+static int macbv_rec(528,11963
+static int match_ac_bound_vars(565,13019
+static void set_up_free_vars(605,14311
+static void unbind_free_var(664,15778
+static int free_var_match(698,16553
+static Term_ptr build_partial_term(810,19424
+static void clear_partial_term(839,20010
+#define GO_FUNCTORS 855,20323
+#define GO_BOUND_VARS 856,20347
+#define GO_FREE_VARS 857,20371
+#define SUCCESS 858,20395
+#define FAILURE 859,20419
+static int match_ac(878,20937
+void match_ac_cancel(1073,26196
+void p_acm(1098,26701
+static Bt_node_ptr match_bt_backup(1137,27645
+static Bt_node_ptr match_bt_guts(1180,28349
+ int match_commute(1328,31324
+Bt_node_ptr match_bt_first(1410,33692
+Bt_node_ptr match_bt_next(1430,34109
+void match_bt_cancel(1458,34662
+
+btu.c,341
+#define POP 10,133
+#define BACKTRACK 11,153
+#define GO 12,173
+#define SUCCESS 13,193
+#define FAILURE 14,213
+Bt_node_ptr unify_bt_first(45,1113
+Bt_node_ptr unify_bt_next(63,1476
+void unify_bt_cancel(91,2033
+Bt_node_ptr unify_bt_guts(122,2616
+Bt_node_ptr unify_bt_backup(306,6478
+int unify_commute(356,7392
+void p_bt_tree(408,8611
+
+clause.c,2372
+static Literal_ptr literal_avail;11,125
+static Clause_ptr clause_avail;12,159
+static List_ptr list_avail;13,191
+static List_pos_ptr list_pos_avail;14,219
+static long literal_gets,15,255
+static long literal_gets, literal_frees,15,255
+static long literal_gets, literal_frees, literal_avails;15,255
+static long clause_gets,16,312
+static long clause_gets, clause_frees,16,312
+static long clause_gets, clause_frees, clause_avails;16,312
+static long list_gets,17,366
+static long list_gets, list_frees,17,366
+static long list_gets, list_frees, list_avails;17,366
+static long list_pos_gets,18,414
+static long list_pos_gets, list_pos_frees,18,414
+static long list_pos_gets, list_pos_frees, list_pos_avails;18,414
+Literal_ptr get_literal(26,545
+void free_literal(51,976
+Clause_ptr get_clause(65,1197
+void free_clause(93,1704
+List_ptr get_list(107,1932
+void free_list(133,2316
+List_pos_ptr get_list_pos(147,2520
+void free_list_pos(175,2993
+void print_clause_mem(189,3215
+void p_clause_mem(207,4447
+Gen_ptr_ptr *init_clause_table_id(init_clause_table_id229,4789
+void store_clause_by_id(250,5149
+void delete_clause_by_id(274,5663
+Clause_ptr find_clause_by_id(297,6202
+void print_clause_table_id(319,6655
+void p_clause_table_id(337,6993
+void zap_clause(351,7290
+int pos_clause(378,7697
+int neg_clause(393,7953
+int literal_count(408,8217
+Literal_ptr literal_i(422,8467
+int unit_clause(444,8815
+Clause_ptr copy_clause(457,9018
+void copy_clause_nonbasic_marks(482,9465
+static Literal_ptr term_to_literals(497,9793
+Clause_ptr term_to_clause(526,10464
+static Term_ptr literals_to_term(539,10699
+Term_ptr clause_to_term(570,11253
+int clause_ident(589,11558
+void list_append(601,11771
+void list_prepend(627,12166
+void list_insert_before(653,12573
+void list_insert_after(679,13025
+int list_remove(708,13566
+int list_remove_all(750,14364
+int list_member(780,14832
+void print_list(798,15125
+void p_list(813,15359
+void list_zap(826,15567
+void list_check(847,15835
+int clause_in_list(875,16311
+static void clause_up_pointers_term(891,16599
+void clause_up_pointers(905,16878
+void print_clause(918,17112
+void p_clause(1019,18990
+void get_ancestors(1030,19126
+void get_para_parents(1073,19875
+void print_proof(1099,20418
+int biggest_variable_in_clause(1128,21058
+static void distinct_vars_rec(1146,21433
+int distinct_vars(1172,21971
+
+clocks.c,216
+ struct clock Clocks[Clocks4,41
+void init_clocks(12,159
+long clock_val(27,421
+void clock_reset(47,745
+char *get_time(get_time59,963
+long system_time(73,1184
+long run_time(98,1655
+long wall_seconds(120,1978
+
+demod.c,272
+void clear_demod_marks(17,237
+static Term_ptr apply_demod(38,867
+Term_ptr demodulate(76,1567
+static Term_ptr contract_bt(125,2616
+Term_ptr demodulate_bt(193,4286
+static Clause_ptr simplifiable_top_bt(238,5335
+int simplifiable_bt(287,6338
+int simplifiable(313,6872
+
+dioph.c,777
+#define MAX_COEF 3,88
+#define MAX_BASIS 4,112
+#define MAX_COMBOS 5,136
+static int gcd(18,307
+static int lcm(33,553
+void p_ac_basis(45,746
+static int less_vec(64,1212
+static int var_check_1(83,1694
+static int var_check_2(106,2283
+static int add_solution(131,2850
+static int a_in_bounds(158,3635
+static int b_in_bounds(196,4791
+int dio(242,6390
+#define ADD_TO_SUM(352,8948
+#define SUBTRACT_FROM_SUM(355,9050
+static int superset_degree(367,9352
+int next_combo_a1(380,9574
+int next_combo_a(433,10853
+ int next_combo_b(484,11986
+#define DOWN 544,13207
+#define OVER 545,13225
+#define BACKUP 546,13243
+#define SUCCESS 547,13261
+#define FAILURE 548,13279
+ int next_combo_c(550,13298
+ int all_combos(636,15380
+ int all_combos_build(683,16430
+ main(775,18310
+
+discrim.c,2161
+#define GO 31,1130
+#define BACKTRACK 32,1150
+#define SUCCESS 33,1170
+#define FAILURE 34,1190
+#define DVAR(36,1211
+static Discrim_ptr discrim_avail;42,1276
+static Flat_ptr flat_avail;43,1310
+static Discrim_pos_ptr discrim_pos_avail;44,1338
+static long discrim_gets,45,1380
+static long discrim_gets, discrim_frees,45,1380
+static long discrim_gets, discrim_frees, discrim_avails;45,1380
+static long flat_gets,46,1437
+static long flat_gets, flat_frees,46,1437
+static long flat_gets, flat_frees, flat_avails;46,1437
+static long discrim_pos_gets,47,1485
+static long discrim_pos_gets, discrim_pos_frees,47,1485
+static long discrim_pos_gets, discrim_pos_frees, discrim_pos_avails;47,1485
+static Discrim_ptr get_discrim(55,1625
+static void free_discrim(82,2072
+static Flat_ptr get_flat(96,2296
+static void free_flat(129,2835
+static Discrim_pos_ptr get_discrim_pos(143,3052
+static void free_discrim_pos(169,3542
+void print_discrim_mem(183,3808
+void p_discrim_mem(200,4829
+Discrim_ptr discrim_init(215,5005
+void discrim_dealloc(226,5146
+static void print_discrim_tree(240,5384
+void print_discrim_index(278,6147
+void p_discrim_index(289,6327
+static Discrim_ptr discrim_insert_rec(303,6625
+void discrim_insert(378,8308
+static Discrim_ptr discrim_end(411,9211
+void discrim_delete(461,10272
+Gen_ptr_ptr discrim_retrieve_leaf(530,11715
+void *discrim_retrieve_first(discrim_retrieve_first676,14719
+void *discrim_retrieve_next(discrim_retrieve_next706,15351
+void discrim_cancel(735,15903
+static int num_ac_args(758,16299
+static int num_ac_nv_args(773,16615
+static void print_discrim_wild_tree(788,16961
+void print_discrim_wild_index(835,18077
+void p_discrim_wild_index(846,18277
+Discrim_ptr discrim_wild_insert_ac(857,18466
+static Discrim_ptr discrim_wild_insert_rec(905,19475
+void discrim_wild_insert(979,21113
+static Discrim_ptr discrim_wild_end(1012,22037
+void discrim_wild_delete(1090,23608
+Gen_ptr_ptr discrim_wild_retrieve_leaf(1159,25065
+void *discrim_wild_retrieve_first(discrim_wild_retrieve_first1340,29089
+void *discrim_wild_retrieve_next(discrim_wild_retrieve_next1369,29708
+void discrim_wild_cancel(1398,30268
+
+eqp.c,1882
+ List_ptr Usable;25,519
+ List_ptr Sos;26,537
+ List_ptr Demodulators;27,552
+ List_ptr Passive;28,576
+ List_ptr Disabled;29,595
+ Discrim_ptr Discrim_demod;33,631
+ Discrim_ptr Discrim_pos;34,682
+ Discrim_ptr Discrim_neg;35,758
+ Fpa_index_ptr Fpa_terms;37,835
+ Fpa_index_ptr Fpa_alphas;38,895
+ Fpa_index_ptr Fpa_bd;39,955
+ Fpa_index_ptr Fpa_pos;40,1011
+ Fpa_index_ptr Fpa_neg;41,1091
+ Pair_index_ptr Para_pairs;43,1172
+ Pair_index_ptr Para_pairs_breadth;44,1230
+#define FS_INDEX(48,1365
+#define LIT_INDEX(49,1428
+#define COMP_LIT_INDEX(50,1483
+ int Id_count;54,1576
+ Gen_ptr_ptr *Id_table;Id_table58,1624
+ Interp_ptr Interpretation;62,1701
+void init(73,1890
+void read_preamble(87,2070
+int subsumes(224,6018
+Clause_ptr subsume_list(263,6787
+Clause_ptr conflict_list(302,7631
+Clause_ptr functional_subsume(346,8635
+Clause_ptr forward_subsume(425,10388
+void check_for_proof(481,11682
+void term_list_to_literal_list(588,14328
+void read_lists(621,14912
+void process_all_input(676,16228
+void demodulate_cl(768,18192
+void back_demodulate(817,19164
+void new_demodulator(877,20549
+Clause_ptr flip_eq_unit(901,21012
+Clause_ptr process_clause(937,21950
+void process_and_store_clause(1035,24327
+void process_derived_clause(1080,25349
+static Clause_ptr find_given_clause(1093,25570
+static void find_pair(1130,26207
+int inferences_to_make(1173,27279
+int sos_test(1187,27500
+void make_inferences(1211,28040
+int eq_prover(1291,29957
+static int has_an_instance(1402,32793
+List_ptr get_bd_clauses(1443,33556
+static void index_bd_terms(1494,34478
+void index_for_bd(1513,34826
+void index_bs_conflict(1531,35158
+void index_for_sub(1552,35526
+void index_demod(1572,35884
+static void index_into_terms(1599,36438
+void index_for_paramod(1623,36948
+void insert_clause_by_weight(1660,37811
+void disable_clause(1681,38244
+int simplifiable_subst(1729,39267
+
+fpa.c,2212
+#define MAX_PATH 8,112
+#define INTERSECT 10,190
+#define UNION 11,211
+#define LEAF 12,232
+static Gen_ptr_ptr Dangle_list 23,699
+static Fpa_head_ptr fpa_head_avail;34,921
+static Fpa_tree_ptr fpa_tree_avail;35,957
+static Fpa_pos_ptr fpa_pos_avail;36,993
+static long fpa_head_gets,37,1027
+static long fpa_head_gets, fpa_head_frees,37,1027
+static long fpa_head_gets, fpa_head_frees, fpa_head_avails;37,1027
+static long fpa_tree_gets,38,1087
+static long fpa_tree_gets, fpa_tree_frees,38,1087
+static long fpa_tree_gets, fpa_tree_frees, fpa_tree_avails;38,1087
+static long fpa_pos_gets,39,1147
+static long fpa_pos_gets, fpa_pos_frees,39,1147
+static long fpa_pos_gets, fpa_pos_frees, fpa_pos_avails;39,1147
+static Fpa_head_ptr get_fpa_head(47,1277
+static void free_fpa_head(73,1715
+static Fpa_tree_ptr get_fpa_tree(87,1954
+static void free_fpa_tree(116,2464
+static Fpa_pos_ptr get_fpa_pos(130,2701
+static void free_fpa_pos(154,3087
+void print_fpa_mem(168,3306
+void p_fpa_mem(184,4324
+Fpa_index_ptr fpa_init(199,4531
+void fpa_dealloc(222,5014
+static void path_mark_end(253,5920
+static int hash_path(281,6526
+static int path_comp(299,6770
+static int path_size(321,7095
+static int *path_copy(path_copy336,7310
+static void insert_fpa_tab(361,7728
+static void delete_fpa_tab(439,9752
+static void term_fpa_rec(503,11159
+void fpa_insert(546,12161
+void fpa_delete(565,12613
+static Fpa_tree_ptr get_leaf_node(594,13546
+static int all_args_vars(626,14163
+static void zap_prop_tree(649,14635
+static Fpa_tree_ptr union_with_commutative_branch(664,14864
+Fpa_tree_ptr build_tree_local(727,16519
+static Fpa_tree_ptr build_for_all(820,18847
+static Fpa_tree_ptr build_tree(859,19689
+static Term_ptr next_term(885,20536
+void print_fpa_index(987,22519
+void p_fpa_index(1019,23119
+void print_prop_tree(1033,23414
+void p_prop_tree(1057,23865
+void print_path(1069,24071
+void p_path(1104,24705
+Term_ptr fpa_retrieve_first(1115,24840
+Term_ptr fpa_retrieve_next(1140,25431
+void fpa_cancel(1193,26405
+Term_ptr fpa_bt_retrieve_first(1208,26615
+Term_ptr fpa_bt_retrieve_next(1232,27227
+void fpa_bt_cancel(1292,28409
+void free_dangle_list(1311,28765
+void print_fpa_index_summary(1329,29054
+
+hello.c,11
+main(3,20
+
+interp.c,287
+Interp_ptr init_interp(22,468
+void print_interp(94,2409
+void p_interp(119,2949
+int eval_term_ground(132,3155
+int eval_clause_ground(182,4325
+int eval_clause(212,5086
+int false_positive_unit(289,6764
+int check_semantic_inference(302,6997
+int semantic_para_parents_check(339,7801
+
+io.c,1028
+#define OUTPUT_SPACE9,153
+#define OPEN_PAREN 13,194
+#define OTHER_PUNC 14,216
+#define NAME_SYM 15,238
+#define SYM_SYM 16,260
+ struct sequence_member 19,362
+static int is_alpha_numeric(38,798
+static int name_sym(53,1051
+static int is_white(71,1355
+static void skip_white(90,1758
+static int is_symbol_char(107,2049
+static int next_token_type(190,4496
+void write_term(252,5922
+void display_term(447,10423
+void d_term(474,10976
+void print_term(489,11240
+void p_term(507,11579
+void print_term_nl(520,11802
+void print_variable(532,11987
+static void fill_in_op_data(558,12478
+static void get_name(588,13087
+static void print_error(640,14138
+static Term_ptr seq_to_quant_term(688,15210
+ Term_ptr seq_to_term(743,16562
+static Term_ptr str_to_args(880,19631
+static Term_ptr str_to_list(941,20812
+static int str_to_sequence(1018,22745
+ Term_ptr str_to_term(1122,25305
+static int read_buf(1177,26844
+static Term_ptr term_fixup(1267,28774
+static Term_ptr term_fixup_2(1307,29560
+Term_ptr read_term(1335,30217
+
+list.c,434
+static Gen_ptr_ptr gen_ptr_avail;9,107
+static long gen_ptr_gets,10,141
+static long gen_ptr_gets, gen_ptr_frees,10,141
+static long gen_ptr_gets, gen_ptr_frees, gen_ptr_avails;10,141
+Gen_ptr_ptr get_gen_ptr(18,269
+void free_gen_ptr(41,634
+void print_list_mem(55,847
+void p_list_mem(70,1341
+Gen_ptr_ptr reverse_gen_list(85,1520
+Gen_ptr_ptr copy_gen_ptr_list(104,1802
+int gen_ptr_count(128,2155
+Gen_ptr_ptr read_list(147,2582
+
+lrpo.c,344
+static int sym_precedence(15,247
+static int lrpo_status(42,734
+static int lrpo_lex(55,987
+static int num_occurrences(87,1809
+static Gen_ptr_ptr set_multiset_diff(110,2383
+static int lrpo_multiset(148,3396
+int lrpo(183,4180
+int lrpo_greater(231,5301
+void merge_sort(248,5529
+int term_compare_ncv(291,6494
+int term_compare_vf(339,7532
+
+main.c,50
+static void print_banner(23,364
+int main(46,818
+
+misc.c,200
+void abend(9,93
+int initial_str(26,406
+int str_int(42,751
+void int_str(70,1195
+int str_long(101,1716
+void long_str(130,2173
+void cat_str(159,2545
+int str_ident(176,2846
+void reverse(187,3006
+
+options.c,349
+ struct flag Flags[Flags3,22
+ struct parm Parms[Parms4,53
+void init_options(12,144
+void print_options(241,4646
+void p_options(281,5481
+void auto_change_flag(292,5613
+void dependent_flags(313,6144
+void auto_change_parm(337,6514
+void dependent_parms(359,7039
+int change_flag(374,7324
+int change_parm(412,8135
+void check_options(453,9151
+
+paramod.c,973
+Gen_ptr_ptr para_parents(28,472
+int key_check(59,1050
+void paramod(80,1567
+void para_from_into(164,3720
+int alpha_is_ac(218,5005
+int eq_lit(229,5212
+int pos_eq_lit(240,5370
+Term_ptr extend_atom(251,5550
+void zap_extended_atom(275,6108
+int poly1(292,6447
+int term_weight(320,7123
+void orient_eq_literals(338,7465
+void renum_vars_recurse(389,8532
+void renumber_vars(420,9278
+void add_vars(440,9668
+int multi_superset(459,9977
+int eq_can_be_demod(482,10353
+int orient_literal_lrpo(511,10989
+static int ordered_alpha_beta_check(545,11834
+static Clause_ptr build_para(565,12241
+static void para_with_indexing_term(617,13417
+void para_with_indexing(678,14823
+void basic_paramod_marks_term(754,16693
+void basic_paramod_marks(772,17050
+static void intersect_nonbasic_marks_term(787,17301
+void intersect_nonbasic_marks(815,18069
+int basic_para_check(829,18393
+int ordered_para_check(843,18619
+int prime_para_check(860,18989
+void p_term_basic(874,19278
+
+pindex.c,679
+#define INT_LARGE 70,2755
+#define IN_RANGE(71,2828
+Pair_index_ptr init_pair_index(85,3201
+int pairs_available(124,3988
+static void init_pair(137,4186
+void insert_pair_index(172,4870
+void delete_pair_index(207,5645
+void retrieve_pair(296,7519
+void p_pair_index(408,10329
+static Pair_index_ptr pair_index_avail;442,10956
+static long pair_index_gets,443,10996
+static long pair_index_gets, pair_index_frees,443,10996
+static long pair_index_gets, pair_index_frees, pair_index_avails;443,10996
+Pair_index_ptr get_pair_index(451,11139
+void free_pair_index(480,11662
+void print_clause_pair_mem(494,11898
+void p_clause_pair_mem(508,12438
+int pair_already_used(523,12631
+
+stats.c,299
+ long Stats[Stats16,265
+ struct clock Clocks[Clocks17,289
+ int Internal_flags[Internal_flags18,323
+void init_stats(26,421
+void print_mem(44,716
+void p_mem(67,1214
+void print_stats(78,1332
+void p_stats(143,4476
+void print_times(154,4600
+void p_times(198,6560
+void output_stats(209,6681
+
+symbols.c,1390
+static struct symbol_table *Sym_tab;Sym_tab6,79
+static int Sym_ent_count;7,147
+static Sym_ent_ptr sym_ent_avail;13,203
+static long sym_ent_gets,14,237
+static long sym_ent_gets, sym_ent_frees,14,237
+static long sym_ent_gets, sym_ent_frees, sym_ent_avails;14,237
+Sym_ent_ptr get_sym_ent(22,365
+void free_sym_ent(55,977
+void print_symbols_mem(69,1193
+void p_symbols_mem(83,1701
+void init_symbol_table(98,1883
+void empty_sym_tab(114,2227
+int new_sym_num(142,2774
+static int hash_sym(159,2996
+Sym_ent_ptr insert_sym(173,3312
+int str_to_sn(198,3915
+void print_syms(256,5200
+void p_syms(274,5516
+char *sn_to_str(sn_to_str285,5690
+int sn_to_arity(304,6038
+Sym_ent_ptr sn_to_node(328,6464
+Sym_ent_ptr sym_tab_member(347,6854
+int in_sym_tab(373,7396
+Sym_ent_ptr find_special_nd(395,7709
+int is_symbol(415,8151
+void mark_as_skolem(426,8358
+int is_skolem(447,8668
+int var_name(471,9087
+int declare_op(485,9353
+void init_special_ops(528,10147
+int process_op_command(571,11163
+void set_assoc_comm(637,12635
+int is_assoc_comm(654,12859
+int process_ac_command(675,13141
+void set_commutative(712,13868
+int is_commutative(729,14096
+int process_comm_command(749,14384
+int process_multiset_command(786,15144
+int process_lex_command(821,15888
+int proper_list(858,16546
+int list_length(876,16896
+int compare_for_auto_lex_order(901,17395
+void auto_lex_order(945,18500
+
+term.c,1195
+#define MAX_TERM_AVAIL 14,284
+static Term_ptr term_avail[term_avail16,310
+static long term_gets,17,354
+static long term_gets, term_frees,17,354
+static long term_gets, term_frees, term_avails,17,354
+static long term_gets, term_frees, term_avails, term_mem;17,354
+Term_ptr get_term(25,481
+void free_term(91,1859
+void print_term_mem(115,2299
+void p_term_mem(130,2713
+void zap_term(147,2923
+int term_ident(164,3239
+Term_ptr copy_term(185,3617
+Term_ptr copy_term_bits(205,3984
+int set_vars_term(226,4372
+int set_vars(261,5157
+int ground_term(277,5421
+int biggest_variable(296,5682
+int symbol_count(316,6008
+int occurs_in(332,6342
+Term_ptr build_binary_term(351,6623
+void copy_nonbasic_marks(370,6962
+void all_nonbasic(388,7320
+void clear_all_nonbasic(406,7622
+void mark_term_disabled(420,7860
+void set_term_scratch(434,8094
+void clear_term_scratch(445,8256
+int term_scratch(456,8418
+void set_term_oriented(467,8577
+void clear_term_oriented(478,8743
+int term_oriented(489,8909
+void set_term_nonbasic(500,9071
+void clear_term_nonbasic(511,9237
+int term_nonbasic(522,9403
+void set_term_disabled(533,9565
+void clear_term_disabled(544,9731
+int term_disabled(555,9897
+
+ttest.c,268
+#define IN_MAIN 1,0
+void clause_test(21,353
+void unify_test(55,1073
+void btm_test(108,2228
+void btu_test(155,3269
+void btu_1_test(216,4672
+void discrim_test(274,5978
+void fpa_test(321,6925
+void lrpo_test(368,7826
+void interp_test(396,8298
+int main(420,8745
+
+unify.c,1017
+static Context_ptr context_avail;9,85
+static Trail_ptr trail_avail;10,119
+static long context_gets,11,149
+static long context_gets, context_frees,11,149
+static long context_gets, context_frees, context_avails;11,149
+static long trail_gets,12,206
+static long trail_gets, trail_frees,12,206
+static long trail_gets, trail_frees, trail_avails;12,206
+#define MAX_MULTIPLIERS 14,258
+static int multipliers[multipliers15,286
+static int next_available_multiplier(23,434
+Context_ptr get_context(41,758
+void free_context(70,1265
+Trail_ptr get_trail(101,1963
+void free_trail(123,2285
+void print_unify_mem(137,2485
+void p_unify_mem(153,3216
+int unify(201,4816
+int occur_check(287,6657
+int match(327,7943
+Term_ptr apply(378,9078
+Term_ptr apply_substitute(415,9950
+Term_ptr apply_basic(446,10838
+Term_ptr apply_substitute_basic(499,12229
+void clear_subst_2(530,13083
+void clear_subst_1(552,13597
+void print_context(570,13897
+void p_context(624,15090
+void print_trail(635,15247
+void p_trail(653,15559

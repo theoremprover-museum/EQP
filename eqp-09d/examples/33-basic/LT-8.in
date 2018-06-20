@@ -1,0 +1,53 @@
+assign(max_mem, 24000).
+assign(max_seconds, 1800).
+
+clear(print_kept).
+clear(print_new_demod).
+clear(print_back_demod).
+clear(print_given).
+
+set(para_pairs).  % delete for given algorithm
+
+set(basic_paramod).
+set(functional_subsume).
+set(prime_paramod).
+assign(ac_superset_limit, 0).
+
+assign(pick_given_ratio, 4).
+%%%%%%%%%%%%%%%%%%%%%%
+op(400, xfx, [*,+,^,v,/,\,#]).  % infix operators
+
+assoc_comm(^).
+assoc_comm(v).
+assoc_comm(*).
+
+assign(max_weight, 17).
+
+end_of_commands.
+
+list(sos).
+
+% (v,^) is a lattice.
+
+x ^ x = x.
+% x ^ y = y ^ x.                % commutativity
+% (x ^ y) ^ z = x ^ (y ^ z).    % associativity
+
+x v x = x.
+% x v y = y v x.                % commutativity
+% (x v y) v z = x v (y v z).    % associativity
+
+x ^ (x v y) = x.
+x v (x ^ y) = x.
+
+% add equations to make (v,*) a lattice.
+
+x * x = x.
+% x * y = y * x.                % commutativity
+% (x * y) * z = x * (y * z).    % associativity
+
+x * (x v y) = x.
+x v (x * y) = x.
+
+A ^ B != A * B.
+end_of_list.

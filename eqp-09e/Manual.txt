@@ -1,0 +1,387 @@
+EQP 0.9 USERS' GUIDE
+
+William McCune
+Mathematics and Computer Science Division
+Argonne National Laboratory
+
+October 1997 (updated April 1999)
+
+1. INTRODUCTION
+
+This document is a quick and dirty (and incomplete) guide to the use
+of EQP, a theorem prover for equational logic.  EQP's important
+properties are:
+
++ It has associative-commutative (AC) unification and matching.
++ It has "basic paramodulation" and several other strategies.
++ It seems to work well on many theorems about lattice-like structures.
++ It proved the Robbins conjecture [5].
+
+In many ways EQP is similar to Otter, including input format,
+functionality, and use.  I hope that Otter users will find EQP easy to
+learn.
+
+EQP is not really meant for wide and general use, but it may be just
+the thing you need to solve your lattice problem.  I expect that
+within a few years, Otter and EQP will be replaced (and subsumed) by a
+new program.  See the EQP experiments paper [2] for an overview of
+EQP, including descriptions of the various strategies available in
+EQP.  See the Otter manual [1] for for general information and details
+on EQP clause syntax.  See the EQP web page [3] for further
+information on EQP.
+
+2. COMPILING AND RUNNING EQP
+
+To compile EQP on a UNIX system, run "make eqp".  For me, EQP (version
+0.9c) compiles out-of-the-box on Linux 2.0.27 (gcc 2.7.2.1), FreeBSD
+2.1.0 (gcc 2.6.3), AIX 4.2 (gcc 2.7.2.1), SunOS 4.1.4 (gcc 2.7.2),
+SunOS 5.5.1 (gcc 2.7.2.1).  I don't know if EQP has been compiled on
+Microsoft or Macintosh operating systems.  To run EQP, put all
+of the input into a file, say problem.in, and run 
+
+        eqp09c < problem.in > problem.out
+
+3.  EQP INPUT
+
+Comments start with the first "%" on a line and continue to the
+end of the line.
+
+3.1.  Clauses
+
+EQP input clauses (which must be positive or negative equations with
+infix symbol "=" or "!=") have the same syntax as Otter 3.0.4 clauses,
+and I will not give the details here.  See the Otter manual [1],
+available from the Otter Web page [4].  Or, see the example input
+files that accompany the source code.  Here are a few things to note
+about clause syntax.
+
++ One can declare function symbols to be infix, with assumed
+associativity and precedence (in a similar way to to many Prolog
+systems).
+
++ Be careful about white space between a function symbol and an
+opening parenthesis.  The rule is: if there is no white space, it is a
+function applied to arguments, e.g, "f(x,y)"; if there is whitespace,
+the opening parenthesis is the start of a new term, e.g., "x* (y*z)".
+The expression "x*(y*z)" is not a well formed term.  In other places,
+white space is usually optional.  I recommend including space around
+infix function symbols, e.g., "x * (y * z)".
+
+3.2.  The Rest of the Input File
+
+EQP's input is divided into two sections: commands, then lists of
+clauses.  The commands section is terminated with "end_of_commands."
+
+3.2.1. Commands
+
+set(<flag-name>).                    % Set a flag
+
+clear(<flag-name>).                  % Clear a flag
+
+assign(<parameter-name>, <integer>). % Assign a value to a parameter
+
+assoc_comm(<symbol>).                % Declare a symbol to be AC
+commutative(<symbol>).               % Declare a symbol to be commutative
+
+  The preceding two commands apply to binary function symbols.
+
+lex(<list-of-symbols>).                  % Order symbols
+lrpo_multiset_status(<list-of-symbols>). % Give symbols multiset status
+
+  The preceding two commands are used with the LRPO term ordering
+  (which is activated with "set(lrpo)").  DO NOT USE LRPO WITH
+  AC OR COMMUTATIVE SYMBOLS.  Symbols in the list must have the
+  correct number of arguments.
+
+op(<precedence>, <type>, <symbol>).
+
+  The op() command is used to declare the symbol syntactic associativity
+  and precedence of a symbol.  This is for parsing and printing only.
+  It is independent of the the assoc_comm() command.
+
+interpretation(<domain-size>, <symbol-interpretations>).
+
+  The preceding command is for use with semantic paramodulation.
+  See interp.c.
+
+3.2.2. Lists of Clauses
+
+Four list names are recognized: usable, sos, demodulators and passive.
+The use of the lists is the same as in Otter.  A list of clauses looks
+like this:
+
+list(<list-name>).
+<sequence-of-clauses>
+end_of_list.
+
+3.3. An Example Input File
+
+The following input file does not make much sense, but it
+is syntactically correct and uses all of the commands.
+
+%%%%%%%%%%%%% Start of input file
+  set(para_pairs).
+  clear(print_given).
+  assign(pick_given_ratio, 4).
+  op(400, xfy, *).
+  op(500, xfx, #).
+  assoc_comm(*).
+  commutative(#).
+  lex([a, b, c, d, e, g, h, f(_,_), _*_, _#_]).
+  lrpo_multiset_status([f(_,_)]).
+  
+  end_of_commands.
+  
+  list(usable).
+  a * b * c = d.
+  e # (e # g) = h.
+  end_of_list.
+  
+  list(sos).
+  c = d.
+  end_of_list.
+  
+  list(demodulators).
+  r = s.
+  end_of_list.
+  
+  list(passive).
+  x # y != y # x.
+  end_of_list.
+%%%%%%%%%%%%% End of input file
+
+4. FLAGS AND PARAMETERS
+
+4.1.  Flags
+
+display_terms - default clear.  If set, all output terms are printed
+in prefix form with full parenthesization (did I just create that word?!).
+
+check_arity - default set.  If set, symbol overloading with multiple
+arities is not allowed.
+
+prolog_style_variables - default clear.  If set, variables start with
+upper case.  If clear, variables start with a member of [uvwxyz].
+
+print_gen - default clear.  If set, all generated clauses are printed
+to the output file.
+
+demod_history - default set.  If set, demodulation steps are included
+in the justification of a clause.
+
+print_given - default set.  If set, given clauses printed to the
+output file.
+
+print_pairs - default clear.  If set, given pairs are printed to the
+output file.
+
+lrpo - default clear.  If set, LRPO (lexicographic recursive path ordering
+is used to orient equations.  DO NOT USE THIS IF YOUR INPUT CONTAINS
+AC of commutative symbols.
+
+para_pairs - default clear.  If set, use the pair algorithm; that is,
+at each iteration of the main loop, select a PAIR of equations for
+application of paramodulation.
+If clear, use the given clause algorithm (as in Otter).
+
+print_forward_subsumed - default clear.  If set, print a message
+when forward subsumption occurs.
+
+print_back_demod - default set.  If set, print a message when
+back demodulation occurs.
+
+print_lists_at_end - default clear.  If set, print all lists
+at the end of the search.
+
+no_demodulation - default clear.  If set, do not add clauses to
+list(demodulators).  However, if the user inputs clauses on
+list(demodulators), those clauses will always be used for demodulation.
+
+index_bt_demod - default set.  This flag is relevant only if
+assoc_comm or commutative symbols have been declared; that is,
+only if backtrack unification/matching is in use.  If set, demodulators
+are indexed.  (If there are no assoc_comm or commutative symbols,
+demodulators are always indexed.
+
+index_ac_args - default set.  This flag is relevant only
+if assoc_comm symbols have been declared.  If set, a small amount
+of indexing is done on arguments of AC symbols.  The indexing is
+done on number of arguments and number of nonvariable arguments.
+If clear, AC symbols are indexed as constants; that is, subterms
+are ignored.
+
+index_paramod - default set.  IF ANY SYMBOLS ARE DECLARED assoc_comm
+OR commutative, THIS FLAG WILL BE AUTOMATICALLY CLEARED, because
+FPA/Path indexing does not handle those properties.
+If set, use FPA/Path indexing for
+paramodulation.  If clear, do not index for paramodulation.
+
+index_bd - default set.  IF ANY SYMBOLS ARE DECLARED assoc_comm OR
+commutative, THIS FLAG WILL BE AUTOMATICALLY CLEARED, because FPA/Path
+indexing does not handle those properties.  If set, use FPA/Path
+indexing for back demodulation.  If clear, do not index for back
+demodulation.
+
+index_bs - default set.  IF ANY SYMBOLS ARE DECLARED assoc_comm OR
+commutative, THIS FLAG WILL BE AUTOMATICALLY CLEARED, because FPA/Path
+indexing does not handle those properties.  If set, use FPA/Path
+indexing for back subsumption.  If clear, do not index for back
+subsumption.
+
+index_fs - default set.  IF ANY SYMBOLS ARE DECLARED assoc_comm OR
+commutative, THIS FLAG WILL BE AUTOMATICALLY CLEARED, because binding
+discrimination tree indexing does not handle those properties.  If set,
+index for forward subsumption.  If clear, do not index for forward
+subsumption.
+
+index_conflict - default set.  IF ANY SYMBOLS ARE DECLARED assoc_comm OR
+commutative, THIS FLAG WILL BE AUTOMATICALLY CLEARED, because FPA/Path
+indexing does not handle those properties.  If set, use FPA/Path
+indexing for unit conflict.  If clear, do not index for unit
+conflict.
+
+print_kept - default set.  If set, inferred clauses that pass the
+retention tests are printed to the output file.
+
+print_new_demod - default set.  If set, newly adjoined demodulators
+are printed to the output file.
+
+delay_back_demod - default clear.  If set, back demodulate with a
+newly adjoined demodulator when (if) it is selected as a given clause
+rather than immediately when it is  adjoined.  WARNING: This flag
+has not been well tested and might not even be fully implemented.
+
+delay_new_demod - default clear.  Not currently in use.
+
+demod_given - default clear.  Not currently in use.
+
+back_demod_sos - default set.  Not currently in use.
+
+ordered_paramod - default clear.  This is relevant only if the
+flags index_paramod (e.g., there are no assoc_comm or commutative
+symbols) and lrpo are set.  If set, paramodulation will not replace
+a term with an LRPO-larger term.
+
+ac_extend - default set.  If set, extensions of AC-rooted equations are
+used for AC paramodulation.  If clear, no extensions are used.
+
+functional_subsume - default clear.  If set, apply functional subsumption,
+that is subsumption modulo functional substitution axioms.  For example,
+a=b subsumes f(a)=f(b).
+
+basic_paramod - default clear.  If set, apply the "basic" refinement
+of paramodulation.
+
+prime_paramod - default clear.  If set, do not generate a paramodulant
+if any term in the substitution is reducible with the current
+set of demodulators.
+
+fpa_delete - default clear.  If set, delete terms from the FPA/Path
+index when the containing clauses are disabled.  One might think
+that we should always do so, but it can be a very expensive operation
+(because of naive implementation), and it does not hurt to leave
+them there.  Recall that when a clause is no longer useful (back
+demodulated or back subsumed) it is disabled, but not actually
+deleted.
+
+4.2. PARAMETERS
+
+max_mem - range [-1 .. INT_MAX], default 8000.  This is the limit,
+in kilobytes, on dynamically allocated memory.  A value of -1 means
+that there is no limit.
+
+max_weight - range [-INT_MAX .. INT_MAX], default INT_MAX.
+This is the weight limit for kept clauses.  The weight is symbol count
+(the total number of constant, variable, function, and predicate symbols).
+There are weight lists as in Otter.
+
+max_given - range [0 .. INT_MAX], default INT_MAX.
+The search will stop after this many given clauses of given pairs.
+
+weight_function - range [0 .. INT_MAX], default 0.  This is for
+orienting equality literals. There are currently two choices: 0 means
+to use symbol count (see Section 5), and 1 is a special-purpose
+polynomial ordering for ring problems (see the source code).
+It should not be difficult to add your own function by writing
+a little C code.
+
+max_proofs - range [1 .. INT_MAX], default 1.
+The search will stop after this many proofs have been found.
+
+report_given - range [1 .. INT_MAX], default INT_MAX.
+Statistics are sent to the output file at intervals of this
+many seconds.
+
+ac_superset_limit - range [-1 .. INT_MAX], default -1.
+This controls the "heuristic" super restriction on AC unifiers.
+-1 means no restriction, 0 means super-0, etc.  See [2] for
+details.
+
+max_seconds - range [0 .. INT_MAX], default INT_MAX.
+The search will stop after this many seconds.
+
+pick_given_ratio - range [-1 .. INT_MAX], default -1.  This is the
+shortest-first to breadth-first selection ratio.  It applies to both
+the given clause algorithm (para_pairs clear) and the pair algorithm
+(para_pairs set).  See [2] for details.
+
+fpa_depth - range [0 .. INT_MAX], default 8.  This is the indexing
+depth for FPA/Path indexing.  0 means to index on the root symbol only.
+
+pair_index_size - range [1 .. 100], default 50.
+This is the size of the pair index.  You probably won't need to change it
+(I never have).
+
+max_variables - range [0 .. INT_MAX], default INT_MAX.
+This is a limit on the number of (distinct) variables for
+kept clauses.  That is, if the value is 2, then derived clauses
+with more than 2 variables will be deleted.
+
+5. TERM ORDERING
+
+Term ordering is very important for many equational problems.  In
+particular it is used to orient equations and to decide if equations
+should be rewrite rules (demodulators).  When no symbols are declared
+to be assoc_comm (AC) or commutative (C), I recommend using the LRPO
+ordering (via set(lrpo)).  (LRPO is okay with associativity and/or
+commutativity as axioms.)
+
+EQP's term ordering with symbols declared to be AC or C is quite weak.
+If symbols are declared to be AC or C, do not use LRPO.  (There are
+LRPO orderings that work with AC and C symbols, but none are
+implemented in EQP.)
+
+The default term ordering (and the one I have used for almost all of
+my AC work so far) is simple: t1 > t2 if t1 has more symbols than t2
+and no variable has more occurrences in t2 than in t1.  This is
+clearly a simplification ordering, because each application of a
+demodulator t1=t2, with t1 > t2, reduces the number of symbols.
+However, this ordering is not very powerful and it will probably not
+be useful if you are looking for a complete set of reductions.  (My
+view is that for theorem proving, it is not particularly important to
+try to make all equations into rewrite rules.)  Also, this order
+cannot be used to expand terms with definitions.
+
+In order to prove some of the benchmark ring theory problems, I coded
+Stickel's polynomial ordering (see Stickel's 1984 CADE paper).
+which is activated with assign(weight_function, 1).  One can
+easily add new polynomial orderings (or other kinds of orderings)
+by adding new C code to EQP.
+
+References
+
+1. W. McCune, Otter 3.0 Reference Manual and Guide.  Tech. Report
+ANL-94/6, Argonne National Laboratory, 1994.  (Also available from
+http://www.mcs.anl.gov/AR/otter/.)
+
+2. W. McCune, 33 Basic Test Problems: A Practical Evaluation of Some
+Paramodulation Strategies.  Chapter 5 in "Automated Reasoning and its
+Applications: Essays in Honor of Larry Wos", ed. R. Veroff, MIT Press
+(1997).
+
+3. W. McCune, EQP Web page, http://www.mcs.anl.gov/AR/eqp/.
+
+4. W. McCune, Otter Web page, http://www.mcs.anl.gov/AR/otter/.
+
+5. W. McCune, Solution of the Robbins Problem.  To appear in Journal of
+Automated Reasoning, 1997.

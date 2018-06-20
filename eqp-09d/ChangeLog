@@ -1,0 +1,60 @@
+More recent changes are at the end.
+
+April 8, 1996.  Prime AC paramodulation requires a lot of time to check
+if substitutions are simplifiable, mostly because the set of demodulators
+is large.  Try the following: keep a separate set of demodulators,
+upt to weight=10, and use that instead.  Results slightly positive,
+several speedups of about 1.5.  Option removed from ntp, because
+implementation is ugly, and it will be hard to decide what vlaue to use.
+
+April 11, 1996.  Checked use of ac_canonical.  Removed call at start
+of process_clause.  Worked on basic AC paramodulation.
+
+April 12, 1996.  Reworked basic paramodulation.  See basic.doc
+
+April 15--16, 1996.  Added semantic paramodulation.
+
+April 23-24, 1996.  Worked on semantic paramod.  Results mixed.
+
+April 25, 1996. Worked on (kludgey fixed) problem of very slow FPA delete.
+New flag fpa_delete (NOTE: default is clear, i.e., kludgey fix):
+If clear, don't delete terms in disabled clauses from FPA lists.
+(When retrieving, skip disabled terms.)  I think the culprits are
+lists like [+] in the back demod FPA list; these can get very big.
+But they aren't used much, so having disabled terms in them doesn't
+hurt.  Remember this kludge if we ever "really delete" clauses.
+
+April 26, 1996. pick_given_ratio for para_pairs.  Found clean
+and efficient solution.  Interesting experiments on AC-ratio.
+
+--------------------------------------------
+
+I failed to log changes for a long time.  The experiments for
+"33 basic test .." paper were conducted.  The papers was written.
+
+June 26, 1996.  EQP 0.9 was made made avaible on the web, in
+association  with the paper.
+
+Again, I failed to log a few changes.
+
+Feb 1997.  I made a change (don't remember what);  the result is EQP 0.9a.
+
+October 21, 1997.  EQP made an unsound inference.  Bug in
+	backtrack unification (in btu.c).  Fixed.
+	Reran Robbins m5-60b job.  Identical search.
+	Reran ortholattice jobs (E2, E3).  Identical searches.
+
+	Result is EQP 0.9c.
+
+October 24, 1997.  Replace Web version 0.9 with this one 0.9c.
+
+Feb 3, 1998.  In definition on next_combo_a1, change 100 to MAX_BASIS.
+	(MAX_BASIS is defined to be 100, so this should have no effect.
+
+Apr 10, 1998.  Discovered paramodulation bug while writing OPS.  When
+	recursively paramodulating into an AC term, I was going into
+	all AC subterms.  We should be going into the top only.
+	This caused redundant inferences.  Fixed.  (by mimicking AC
+	Demodulation, which handled the situation correctly.)
+	
+        Result is EQP 0.9d.

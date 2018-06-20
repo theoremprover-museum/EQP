@@ -1,0 +1,39 @@
+% This input file is for EQP 0.9.
+%
+% Lemma 2. If a Robbins algebra satisfies 
+%
+%     exists C exists D, n(C+D)=n(C),
+%
+% then it satisfies 
+%
+%     exists A exists B, A+B=A.
+%
+% This lemma was first proved by Steve Winker.
+% It takes about a week on an RS/6000 processor.
+
+op(500, xfy, +).
+assoc_comm(+).
+
+assign(max_mem, 24000).
+% assign(max_seconds, 14400).
+
+% clear(print_kept).
+clear(print_new_demod).
+clear(print_back_demod).
+clear(print_given).
+
+set(para_pairs).
+% assign(pick_given_ratio, 4).
+
+assign(max_weight, 34).
+
+end_of_commands.
+
+list(sos).
+n(C + D) = n(C).                            % hypothesis
+n(n(n(y) + x) + n(x + y)) = x.        % Robbins axiom
+end_of_list.
+
+list(passive).
+x + y != x.
+end_of_list.

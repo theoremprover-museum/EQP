@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252"><meta name="viewport" content="width=device-width"><title>http://www.cs.unm.edu/~mccune/eqp/</title><link rel="stylesheet" type="text/css" href="eqp_files/viewsource.css"></head><body id="viewsource" class="highlight" style="-moz-tab-size: 4" contextmenu="actions"><pre id="line1"><span></span><span class="error" title="Start tag seen without seeing a doctype first. Expected “&lt;!DOCTYPE html&gt;”.">&lt;<span class="start-tag">HTML</span>&gt;</span><span>
+<span id="line2"></span></span><span>&lt;<span class="start-tag">HEAD</span>&gt;</span><span>
+<span id="line3"></span></span><span>&lt;<span class="start-tag">TITLE</span>&gt;</span><span>EQP: Equational Theorem Prover</span><span>&lt;/<span class="end-tag">TITLE</span>&gt;</span><span>
+<span id="line4"></span>
+<span id="line5"></span></span><span>&lt;/<span class="end-tag">HEAD</span>&gt;</span><span>
+<span id="line6"></span></span><span>&lt;<span class="start-tag">BODY</span>&gt;</span><span>
+<span id="line7"></span>
+<span id="line8"></span></span><span>&lt;<span class="start-tag">IMG</span> <span class="attribute-name">SRC</span>="<a class="attribute-value" href="view-source:http://www.cs.unm.edu/~mccune/eqp/eqp-trans.gif">eqp-trans.gif</a>"&gt;</span><span>
+<span id="line9"></span>
+<span id="line10"></span></span><span>&lt;<span class="start-tag">H1</span>&gt;</span><span>Equational Prover</span><span>&lt;/<span class="end-tag">H1</span>&gt;</span><span>
+<span id="line11"></span>
+<span id="line12"></span>EQP is an automated theorem proving program for first-order
+<span id="line13"></span>equational logic.  Its strengths are good implementations
+<span id="line14"></span>of associative-commutative unification and matching,
+<span id="line15"></span>a variety of strategies for equational reasoning, and
+<span id="line16"></span>fast search.  It seems to perform well on many problems
+<span id="line17"></span>about lattice-like structures.
+<span id="line18"></span>
+<span id="line19"></span></span><span>&lt;<span class="start-tag">P</span>&gt;</span><span>
+<span id="line20"></span>EQP is not as stable and polished as our main production theorem
+<span id="line21"></span>prover </span><span>&lt;<span class="start-tag">A</span> <span class="attribute-name">HREF</span>="<a class="attribute-value" href="view-source:http://www.cs.unm.edu/~mccune/otter/">../otter/</a>"&gt;</span><span>
+<span id="line22"></span>Otter</span><span>&lt;/<span class="end-tag">A</span>&gt;</span><span>.  But it has obtained several interesting results, and we
+<span id="line23"></span>have decided to make it available (including the source code) to
+<span id="line24"></span>everyone, with no restrictions (and of course no warranty).
+<span id="line25"></span>EQP's documentation is not good, but if you already know Otter,
+<span id="line26"></span>you might not have great difficulty in learning to use EQP.
+<span id="line27"></span>
+<span id="line28"></span></span><span>&lt;<span class="start-tag">h3</span>&gt;</span><span>Download</span><span>&lt;/<span class="end-tag">h3</span>&gt;</span><span>
+<span id="line29"></span>The whole package</span><span class="error" title="Stray end tag “a”.">&lt;/<span class="end-tag">A</span>&gt;</span><span>, including the source code,
+<span id="line30"></span>users' guide, and example input files:
+<span id="line31"></span></span><span>&lt;<span class="start-tag">ul</span>&gt;</span><span>
+<span id="line32"></span></span><span>&lt;<span class="start-tag">li</span>&gt;</span><span></span><span>&lt;<span class="start-tag">A</span> <span class="attribute-name">HREF</span>="<a class="attribute-value" href="view-source:http://www.cs.unm.edu/~mccune/old-ftp/eqp-09d.tar.gz">../old-ftp/eqp-09d.tar.gz</a>"&gt;</span><span>eqp-09d</span><span>&lt;/<span class="end-tag">a</span>&gt;</span><span> (April 1998)
+<span id="line33"></span></span><span>&lt;<span class="start-tag">li</span>&gt;</span><span></span><span>&lt;<span class="start-tag">A</span> <span class="attribute-name">HREF</span>="<a class="attribute-value" href="view-source:http://www.cs.unm.edu/~mccune/old-ftp/eqp-09e.tar.gz">../old-ftp/eqp-09e.tar.gz</a>"&gt;</span><span>eqp-09e</span><span>&lt;/<span class="end-tag">a</span>&gt;</span><span> (May 2009)
+<span id="line34"></span></span><span>&lt;/<span class="end-tag">ul</span>&gt;</span><span>
+<span id="line35"></span>
+<span id="line36"></span></span><span>&lt;<span class="start-tag">p</span>&gt;</span><span>
+<span id="line37"></span>For a quick preview, see the
+<span id="line38"></span></span><span>&lt;<span class="start-tag">A</span> <span class="attribute-name">HREF</span>="<a class="attribute-value" href="view-source:http://www.cs.unm.edu/~mccune/eqp/README.txt">README.txt</a>"&gt;</span><span>README file</span><span>&lt;/<span class="end-tag">A</span>&gt;</span><span>,
+<span id="line39"></span>the
+<span id="line40"></span></span><span>&lt;<span class="start-tag">A</span> <span class="attribute-name">HREF</span>="<a class="attribute-value" href="view-source:http://www.cs.unm.edu/~mccune/eqp/Manual.txt">Manual.txt</a>"&gt;</span><span>users' guide</span><span>&lt;/<span class="end-tag">A</span>&gt;</span><span>,
+<span id="line41"></span>and the
+<span id="line42"></span></span><span>&lt;<span class="start-tag">A</span> <span class="attribute-name">HREF</span>="<a class="attribute-value" href="view-source:http://www.cs.unm.edu/~mccune/eqp/ChangeLog.txt">ChangeLog.txt</a>"&gt;</span><span>ChangeLog file</span><span>&lt;/<span class="end-tag">A</span>&gt;</span><span>.
+<span id="line43"></span>
+<span id="line44"></span></span><span>&lt;<span class="start-tag">HR</span>&gt;</span><span>
+<span id="line45"></span></span><span>&lt;<span class="start-tag">H2</span>&gt;</span><span>Related Pages</span><span>&lt;/<span class="end-tag">H2</span>&gt;</span><span>
+<span id="line46"></span></span><span>&lt;<span class="start-tag">UL</span>&gt;</span><span>
+<span id="line47"></span>
+<span id="line48"></span></span><span>&lt;<span class="start-tag">LI</span>&gt;</span><span></span><span>&lt;<span class="start-tag">A</span> <span class="attribute-name">HREF</span>="<a class="attribute-value" href="view-source:http://www.cs.unm.edu/~mccune/papers/robbins/">../papers/robbins/</a>"&gt;</span><span>
+<span id="line49"></span>EQP's Solution of the Robbins Problem</span><span>&lt;/<span class="end-tag">A</span>&gt;</span><span>
+<span id="line50"></span>
+<span id="line51"></span></span><span>&lt;<span class="start-tag">LI</span>&gt;</span><span></span><span>&lt;<span class="start-tag">A</span> <span class="attribute-name">HREF</span>="<a class="attribute-value" href="view-source:http://www.cs.unm.edu/~mccune/papers/ortholattice/">../papers/ortholattice/</a>"&gt;</span><span>
+<span id="line52"></span>EQP's results on some problems in quantum logic</span><span>&lt;/<span class="end-tag">A</span>&gt;</span><span>
+<span id="line53"></span>
+<span id="line54"></span></span><span>&lt;<span class="start-tag">LI</span>&gt;</span><span></span><span>&lt;<span class="start-tag">A</span> <span class="attribute-name">HREF</span>="<a class="attribute-value" href="view-source:http://www.cs.unm.edu/~mccune/papers/33-basic-test-problems/">../papers/33-basic-test-problems/</a>"&gt;</span><span>
+<span id="line55"></span>33 Basic Test Problems: A Practical Evaluation of Some
+<span id="line56"></span>Paramodulation Strategies</span><span>&lt;/<span class="end-tag">A</span>&gt;</span><span>, a paper on experiments with EQP
+<span id="line57"></span>
+<span id="line58"></span></span><span>&lt;<span class="start-tag">LI</span>&gt;</span><span></span><span>&lt;<span class="start-tag">A</span> <span class="attribute-name">HREF</span>="<a class="attribute-value" href="view-source:http://www.cs.unm.edu/~mccune/otter/">../otter/</a>"&gt;</span><span>
+<span id="line59"></span>Otter</span><span>&lt;/<span class="end-tag">A</span>&gt;</span><span>, a theorem prover for full first-order logic with equality
+<span id="line60"></span>
+<span id="line61"></span></span><span>&lt;<span class="start-tag">LI</span>&gt;</span><span></span><span>&lt;<span class="start-tag">A</span> <span class="attribute-name">HREF</span>="<a class="attribute-value" href="view-source:http://www.cs.unm.edu/~mccune/mace2/">../mace2/</a>"&gt;</span><span>
+<span id="line62"></span>Mace2</span><span>&lt;/<span class="end-tag">A</span>&gt;</span><span>, a program that looks for models (e.g., counterexamples) of
+<span id="line63"></span>first-order statements
+<span id="line64"></span>
+<span id="line65"></span></span><span>&lt;/<span class="end-tag">UL</span>&gt;</span><span>
+<span id="line66"></span>
+<span id="line67"></span></span><span>&lt;/<span class="end-tag">BODY</span>&gt;</span><span>
+<span id="line68"></span></span><span>&lt;/<span class="end-tag">HTML</span>&gt;</span><span>
+<span id="line69"></span></span></pre><menu type="context" id="actions"><menuitem id="goToLine" label="Go to Line…" accesskey="L"></menuitem><menuitem id="wrapLongLines" label="Wrap Long Lines" type="checkbox"></menuitem><menuitem id="highlightSyntax" label="Syntax Highlighting" type="checkbox" checked="true"></menuitem></menu></body></html>

@@ -1,0 +1,46 @@
+assoc_comm(+).
+
+op(500, xfy, +).
+op(400, xfy, *).
+
+set(para_pairs).
+clear(print_given).
+
+assign(ac_superset_limit, 0).
+assign(pick_given_ratio, 4).
+
+assign(weight_function, 1).
+assign(max_weight, 60).
+
+assign(max_mem, 16000).
+% assign(report_given, 100).
+
+end_of_commands.
+
+list(usable).
+0 + x = x.
+m(x) + x = 0.
+(x * y) * z = x * y * z.
+x * (y + z) = x * y + x * z.
+(x + y) * z = x * z + y * z.
+m(0) = 0.
+m(m(x)) = x.
+x * 0 = 0.
+0 * x = 0.
+x * m(y) = m(x * y).
+m(x) * y = m(x * y).
+m(x + y) = m(x) + m(y).
+end_of_list.
+
+list(sos).
+x * x * x= x.
+a * b != b * a.
+end_of_list.
+
+list(demodulators).
+(x * y) * z = x * (y * z).
+
+(x + y = x + z) = (y = z).
+(x + y = x) = (y = 0).
+(x = x + y) = (0 = y).
+end_of_list.

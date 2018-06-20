@@ -1,0 +1,8 @@
+#!/bin/csh
+
+foreach i (*.in)
+
+  echo doing $i ...
+  eqp < $i > $i:r.out
+
+end

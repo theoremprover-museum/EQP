@@ -1,0 +1,64 @@
+assign(max_mem, 24000).
+assign(max_seconds, 1800).
+
+clear(print_kept).
+clear(print_new_demod).
+clear(print_back_demod).
+clear(print_given).
+
+set(para_pairs).  % delete for given algorithm
+
+set(basic_paramod).
+set(functional_subsume).
+set(prime_paramod).
+assign(ac_superset_limit, 0).
+
+assign(pick_given_ratio, 4).
+%%%%%%%%%%%%%%%%%%%%%%
+op(400, xfx, [*,+,^,v,/,\,#]).  % infix operators
+
+assoc_comm(^).
+assoc_comm(v).
+
+assign(max_weight, 15).
+
+end_of_commands.
+
+list(sos).
+x ^ x = x.
+% x ^ y = y ^ x.                % commutativity
+% (x ^ y) ^ z = x ^ (y ^ z).    % associativity
+x v x = x.
+% x v y = y v x.                % commutativity
+% (x v y) v z = x v (y v z).    % associativity
+x ^ (x v y) = x.
+x v (x ^ y) = x.
+0 ^ x = 0.
+0 v x = x.
+1 ^ x = x.
+1 v x = 1.
+x ^ x = x.
+x v x = x.
+(x ^ y) v (x ^ z) = x ^ (y v (x ^ z)).  % Modularity
+
+% ((A v B)' v ((A ^ B)' ^ B)) ^ ((A v B)' v ((A ^ B)' ^ A)) = (A v B)'
+
+% C1 is a complement of A v B
+C1 v (A v B) = 1.
+C1 ^ (A v B) = 0.
+
+% C2 is a complement of A ^ B
+C2 v (A ^ B) = 1.
+C2 ^ (A ^ B) = 0.
+
+%%%%%%%%
+% denial 1:
+(C1 v (A ^ C2)) ^ (C1 v (B ^ C2)) != C1.
+
+%%%%%%%%
+% denial 2:
+% C1 v (A ^ C2) = D.
+% C1 v (B ^ C2) = E.
+% D ^ E != C1.
+
+end_of_list.
